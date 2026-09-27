@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
+:root {
+  --color-mode-900: hsl(209, 23%, 22%);
+  --font-nunito: "Nunito Sans", sans-serif;
+
+  --bg-body: #FAFAFA;
+  --text: hsl(200, 15%, 8%);
+  --bg-element: #fff;
+}
+.dark {
+  --bg-body: #202D36;
+  --bg-element: #2B3743;
+  --text: #fff;
+}
+
+@theme inline {
+  --font-nunito: var(--font-nunito);
+  --color-bg-body: var(--color-bg-body);
+  --color-text: var(--text);
+  --color-bg-element: var(--bg-element);
+}
+
+body {
+   font-family: var(--font-nunito);
+   color: var(--text);
+   background-color: var(--bg-body);
+}
+
+@layer components {
+  .select, .select::picker(select) {
+    appearance: base-select;
+    background-color: var(--bg-element);
+    color: var(--text);
+    border-radius: 8px;
+  }
+
+  .select::picker-icon {
+ transition: rotate 200ms ease;
+  }
+  .select:open::picker-icon {
+    rotate: 180deg;
+  }
+
+  .select::picker(select) {
+    margin-top: 8px;
+    padding: 12px;
+    width: 240px;
+    border:none;
+    box-shadow:  0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+}
